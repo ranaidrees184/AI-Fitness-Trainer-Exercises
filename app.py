@@ -31,10 +31,13 @@ exercise_done = False
 current_exercise = "squats"
 
 # --- MediaPipe Setup ---
-mp_pose_module = mp.solutions.pose
+#mp_pose_module = mp.solutions.pose
+#mp_drawing = mp.solutions.drawing_utils
+#pose = mp_pose_module.Pose(min_detection_confidence=0.7, min_tracking_confidence=0.7)
+mp_pose = mp.solutions.pose.Pose(
+    min_detection_confidence=0.7, min_tracking_confidence=0.7
+)
 mp_drawing = mp.solutions.drawing_utils
-pose = mp_pose_module.Pose(min_detection_confidence=0.7, min_tracking_confidence=0.7)
-
 # --- Camera Capture ---
 def capture_frames():
     global latest_frame, camera, camera_active
