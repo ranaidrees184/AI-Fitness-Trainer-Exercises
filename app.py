@@ -7,7 +7,9 @@ import threading
 from mediapipe import solutions as mp_solutions
 import time
 import numpy as np
-
+# Direct submodule imports
+from mediapipe.python.solutions.pose import Pose
+from mediapipe.python.solutions.drawing_utils import DrawingSpec, draw_landmarks
 app = FastAPI()
 
 app.add_middleware(
@@ -31,11 +33,13 @@ target_reps = 10
 exercise_done = False
 current_exercise = "squats"
 
-# --- MediaPipe Setup ---
-mp_pose = mp_solutions.pose.Pose(min_detection_confidence=0.7, min_tracking_confidence=0.7)
-mp_drawing = mp_solutions.drawing_utils
-pose = mp_pose.Pose(min_detection_confidence=0.7, min_tracking_confidence=0.7)
+# --- MediaPipe Setup --
 
+# Initialize pose detector
+mp_pose = Pose(min_detection_confidence=0.7, min_tracking_confidence=0.7)
+
+# Use draw_landmarks directly in your frame processing
+mp_drawing = draw_landmarks
 def capture_frames():
     global latest_frame, camera, camera_active
     while camera_active and camera is not None:
