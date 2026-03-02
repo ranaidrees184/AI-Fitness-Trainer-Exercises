@@ -6,7 +6,7 @@ import mediapipe as mp
 import threading
 import time
 import numpy as np
-
+import os
 app = FastAPI()
 
 app.add_middleware(
@@ -176,6 +176,6 @@ def set_ex(name: str):
     return {"status": "exercise set"}
 
 if __name__ == "__main__":
-    import uvicorn
     start_camera()
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
