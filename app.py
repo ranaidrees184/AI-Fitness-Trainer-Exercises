@@ -4,7 +4,6 @@ from fastapi.responses import StreamingResponse
 import cv2
 import mediapipe as mp
 import threading
-from mediapipe import solutions as mp_solutions
 import time
 import numpy as np
 # Direct submodule imports
