@@ -1,0 +1,9 @@
+opencv-python
+pandas
+mediapipe
+scikit-learn
+tk
+pillow
+flask
+#pickle5
+#customtkinter
